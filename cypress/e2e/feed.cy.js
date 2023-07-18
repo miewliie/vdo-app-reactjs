@@ -5,8 +5,24 @@ describe('Video Feed', () => {
     cy.visit('http://localhost:3000/');
   })
 
+  context('navbar: ', () => {
+    it('should display logo -> with href value "/" ', () => {
+      cy.getBySel("pathUrl").should(($element) => {
+        const hrefValue = $element.attr('href');
+        expect(hrefValue).to.equal('/');
+      })
+    })
+
+    it('should display search bar', () => {
+      cy.getBySel("searchBox").within(() => {
+        cy.getBySel("searchBar").should('have.attr', 'placeholder', 'Search...');
+        cy.getBySel("searchIcon").should('be.visible');
+      });
+    })
+  })
+
   context('videos: ', () => {
-    it('click video cover -> go to correct player detail page', () => {
+    it('should display video feed', () => {
       cy.getBySel("feedTitle").contains('New videos');
       cy.getBySel("videoUrl").should(($element) => {
         const hrefValue = $element.attr('href');
