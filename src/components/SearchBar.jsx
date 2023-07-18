@@ -21,6 +21,7 @@ const SearchBar = () => {
 
     return (
         <Paper
+            data-test-id='searchBox'
             component="form"
             onSubmit={onhandleSubmit}
             sx={{
@@ -32,6 +33,7 @@ const SearchBar = () => {
             }}
         >
             <input
+                data-test-id='searchBar'
                 className='search-bar'
                 placeholder='Search...'
                 value={searchTerm}

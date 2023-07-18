@@ -9,9 +9,11 @@ const Videos = ({ videos, direction }) => {
 
     if(videos){
         return (
-            <Stack direction={direction || "row"} flexWrap="wrap" justifyContent="start" alignItems="start" gap={2}>
+            <Stack 
+            data-test-id='videoList'
+            direction={direction || "row"} flexWrap="wrap" justifyContent="start" alignItems="start" gap={2}>
             {videos.map((item, idx) => (
-                <Box key={idx}>
+                <Box key={idx} data-test-id='videoBox'>
                 {item.videoId && <VideoCard video={item} channelTitle={item.channelTitle}/> }
                 {item.type === 'channel' && <ChannelCard channelDetail={item} hasHTTPS='false' />}
                 </Box>

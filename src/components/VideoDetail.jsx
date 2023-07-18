@@ -23,11 +23,11 @@ const VideoDetail = () => {
       <Stack direction={{ xs: 'column', md: 'row' }}>
 
         <Box flex={1}>
-          <Box sx={{ width: '100%', position: 'sticky', top: '86px' }}>
-            <ReactPlayer url={`https://www.youtube.com/watch?v=${id}`} 
+          <Box data-test-id='playerBox' sx={{ width: '100%', position: 'sticky', top: '86px' }}>
+            <ReactPlayer data-test-id='videoPlayer' url={`https://www.youtube.com/watch?v=${id}`} 
             className="react-player" controls />
 
-            <Typography color='#FFF' variant="h5" fontWeight="bold" p={2}>
+            <Typography data-test-id='videoPlayerTitle' color='#FFF' variant="h5" fontWeight="bold" p={2}>
               {title}
             </Typography>
 
