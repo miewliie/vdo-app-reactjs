@@ -5,6 +5,7 @@ import { categories } from '../utils/constants';
 const Sidebar = ({selectedCategory, setSelectedCategory}) => {
   return (
     <Stack
+      data-test-id="sidebar"
       direction="row"
       sx={{
         overflowY: "auto",
@@ -14,7 +15,7 @@ const Sidebar = ({selectedCategory, setSelectedCategory}) => {
     >
       {categories.map((category) => (
         <button 
-          data-test-id='category-btn'
+          data-test-id='categories'
           className='category-btn'
           onClick={() => setSelectedCategory(category.name)}
           style={{
