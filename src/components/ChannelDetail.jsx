@@ -22,7 +22,7 @@ const ChannelDetail = () => {
     <Box data-test-id='channelDetail' minHeight="95vh">
       <Box>
         <div 
-        data-test-id='channelDetail-cover'
+        data-test-id='channelDetailCover'
         style={{
           background: 'radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%)',
           zIndex: 10,
@@ -31,7 +31,7 @@ const ChannelDetail = () => {
 
         <ChannelCard channelDetail={channelDetail} hasHTTPS='true' marginTop='-110px' />
       </Box>
-      <Box data-test-id='channelDetail-videoList' display="flex" p="2">
+      <Box data-test-id='channelDetailVideoList' display="flex" p="2">
         <Box sx={{mr: { sm: '100px' }}} />
         <Videos videos={videos} />
       </Box>

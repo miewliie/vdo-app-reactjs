@@ -50,7 +50,7 @@ const ChannelCard = ({channelDetail, hasHTTPS, marginTop}) => {
                 />
                 <Typography data-test-id='channelTitle' variant="h6">
                   {channelDetail?.channelTitle || channelDetail?.title || demoChannelTitle}
-                  <CheckCircle sx={{ fontSize: 14, color: 'gray', ml: '5px'}} />
+                  <CheckCircle data-test-id='CheckCircleIcon' sx={{ fontSize: 14, color: 'gray', ml: '5px'}} />
                 </Typography>
                 
                 <Typography data-test-id='subscriberCount'>
