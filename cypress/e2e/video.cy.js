@@ -1,7 +1,7 @@
 describe('video scenarios', () => {
 
     beforeEach(() => {
-        cy.visit('http://localhost:3000/');
+        cy.visit('/');
       })
 
     context('feed: ', () => {
