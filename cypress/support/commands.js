@@ -21,3 +21,12 @@ Cypress.Commands.add('getVideoPlayerTitle',  (callback) => {
         callback(text);
       })
 });
+
+Cypress.Commands.add('getFirstVideoTitleFromVideoList',  (elements, callback) => {
+    cy.getBySel(elements)
+    .first()
+    .invoke('text')
+    .then((text) =>{
+      callback(text);
+  })
+});
