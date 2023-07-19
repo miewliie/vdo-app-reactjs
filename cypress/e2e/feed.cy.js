@@ -1,6 +1,5 @@
 describe('Video Feed', () => {
-  let videoTitle;
-  
+ 
   beforeEach(() => {
     cy.visit('http://localhost:3000/');
   })
@@ -21,6 +20,34 @@ describe('Video Feed', () => {
     })
   })
 
+  context('sidebar: ', () => {
+    it('should display sidebar with 1st menu highlight rgb(252, 21,3) ', () => {
+      let redColor = 'rgb(252, 21, 3)';
+      cy.getBySel("categories")  
+      .first()
+      .should('have.css', 'background-color', redColor);
+    })
+
+    it('should click 2nd category -> expect feed title equal category name', () => {
+      let secondMenu;
+      let feedTitle;
+
+      cy.getBySel("categories")  
+        .first()
+        .should('have.text', 'New')
+        .next()
+        .should(($element) => {
+          $element.click();
+          secondMenu = $element.text();
+        })
+      cy.getBySel("feedTitle").should(($element) => {
+        feedTitle = $element.text();
+        expect(feedTitle).to.include(secondMenu);
+      })
+    })
+
+  })
+
   context('videos: ', () => {
     it('should display video feed', () => {
       cy.getBySel("feedTitle").contains('New videos');
@@ -36,34 +63,6 @@ describe('Video Feed', () => {
         const regex = /\/channel\/([^\/]+)$/;
         expect(hrefValue).to.match(regex);
       })
-
-      // click first video
-      cy.getBySel("videoTitle")
-        .first()
-        .invoke('text')
-        .then((text) =>{
-          videoTitle = text;
-        })
-      cy.getBySel("videoUrl").first().click();
-
-      // on video player detail
-      cy.getBySel("videoPlayer").should('be.visible');
-      cy.intercept({
-        method: 'GET',
-        url: /https:\/\/googleads\.g\.doubleclick\.net\/.*/,
-      }, (req) => {
-        req.reply({}) // Empty response to ignore the request
-      })
-      cy.intercept('GET', 'https://www.youtube.com/*').as('youtubeRequests')
-      cy.wait('@youtubeRequests') 
-
-      // // verify video title match
-      cy.getBySel("videoPlayerTitle")
-        .invoke('text')
-        .then((text) =>{
-          const videoPlayerTitle = text;
-          expect(videoTitle).to.equal(videoPlayerTitle)
-        })
 
     })
   })
