@@ -17,7 +17,7 @@ describe('channel', () => {
                 $element.click();
                 secondMenu = $element.text();
             })
-            // cy.wait(10000)
+            cy.wait(10000)
             cy.getBySel("feedTitle").should(($element) => {
               feedTitle = $element.text();
               expect(feedTitle).to.include(secondMenu);
